@@ -1,0 +1,41 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com/nf-fastq2bam/master/assets/schema_input.json",
+    "title": "nf-fastq2bam pipeline - params.input schema",
+    "description": "Schema for the file provided with params.input",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "group_id": {
+                "type": "string",
+                "pattern": "^\\S+$",
+                "errorMessage": "group_id must be provided and cannot contain spaces"
+            },
+            "subject_id": {
+                "pattern": "^\\S+$",
+                "errorMessage": "subject_id must be provided and cannot contain spaces"
+            },
+            "sample_id": {
+                "pattern": "^\\S+$",
+                "errorMessage": "subject_id must be provided and cannot contain spaces"
+            },
+            "sample_type": {
+                "pattern": "^\\S+$",
+                "errorMessage": "sample_type must be provided and cannot contain spaces"
+            },
+            "sequence_type": {
+                "pattern": "^\\S+$",
+                "errorMessage": "sequence_type must be provided and cannot contain spaces"
+            },
+            "filetype": {
+                "pattern": "^\\S+$",
+                "errorMessage": "filetype must be provided and cannot contain spaces"
+            },
+            "filepath": {
+                "pattern": "^\\S+$",
+                "errorMessage": "filepath must be provided and cannot contain spaces"
+            }
+        }
+    }
+}
