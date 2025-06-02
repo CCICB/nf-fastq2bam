@@ -117,6 +117,24 @@ process {
 
 ```
 
+Recommended `resources.config`:
+```
+process {
+  withName: BAM_TOOLS {
+    memory =  { 24.GB * task.attempt }  
+    cpus   =  { 16    * task.attempt }
+  }
+  withName: 'BWAMEM2_ALIGN.*' {
+    cpus = 4
+    memory =  { 64.GB * task.attempt }  
+
+  }
+  withName: 'FASTP.*' {
+    memory = { 64.GB * task.attempt }  
+    cpus = 16
+  }
+}
+```
 
 Launch `nf-fastq2bam`:
 
@@ -127,7 +145,7 @@ git clone git@github.com:CCICB/nf-fastq2bam.git
 ```bash
 nextflow run nf-fastq2bam \
   -profile <docker|singularity|...> \
-  -c <your run.config file here. You may also list other config files separated by commas> \
+  -c <your run.config and resources.config files here, separated by commas. You may also list other config files.> \
   -params-file <your params.yaml> \
   --mode <wgts|targeted> \
   --genome_type <alt|no_alt> \
