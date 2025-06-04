@@ -70,6 +70,7 @@ executor {
 }
 
 process {
+  resourceLimits = [ cpus: 32, memory: 1020.GB, time: 48.h ]
   errorStrategy = 'retry'
   maxRetries = 3
   executor = 'pbspro'
@@ -101,7 +102,8 @@ params {
 }
 
 process {
-    //  defaults for all processes. 
+    //  defaults for all processes.
+    resourceLimits = [ cpus: 32, memory: 1020.GB, time: 48.h ]
     cpus   = { check_max( 1    * task.attempt, 'cpus'   ) }
     memory = { check_max( 6.GB * task.attempt, 'memory' ) }
     time   = { check_max( 4.h  * task.attempt, 'time'   ) }
